@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://vpcdrm4pc315"]
+
+[ext_resource type="PackedScene" uid="uid://bmmxfojkuvs2j" path="res://scenes/tile_map_layer_sword.tscn" id="1_p2eb4"]
+[ext_resource type="Script" uid="uid://coj3wyclm3mn0" path="res://scenes/crafting.gd" id="1_pff4a"]
+[ext_resource type="Script" uid="uid://b2vet3kl76b03" path="res://scenes/sword_render.gd" id="3_jo1yo"]
+
+[node name="Crafting" type="Node2D" unique_id=1772664073]
+script = ExtResource("1_pff4a")
+
+[node name="Button" type="Button" parent="." unique_id=646105936]
+offset_left = 960.0
+offset_top = 48.0
+offset_right = 1112.0
+offset_bottom = 168.0
+text = "expand
+"
+
+[node name="Button2" type="Button" parent="." unique_id=473325139]
+offset_left = 960.0
+offset_top = 248.0
+offset_right = 1114.0
+offset_bottom = 368.0
+text = "production shrink"
+
+[node name="Button3" type="Button" parent="." unique_id=1026012987]
+offset_left = 960.0
+offset_top = 440.0
+offset_right = 1112.0
+offset_bottom = 560.0
+text = "reset"
+
+[node name="swordLogic" parent="." unique_id=667064894 instance=ExtResource("1_p2eb4")]
+tile_map_data = PackedByteArray(0, 0, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 6, 0, 0, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="swordRender" parent="." unique_id=724551256 instance=ExtResource("1_p2eb4")]
+tile_map_data = PackedByteArray(0, 0, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 6, 0, 0, 0, 0, 0, 5, 0, 0, 0)
+script = ExtResource("3_jo1yo")
+
+[connection signal="pressed" from="Button" to="." method="_on_production_expand_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_production_shrink_pressed"]
+[connection signal="pressed" from="Button3" to="." method="_on_restart_pressed"]

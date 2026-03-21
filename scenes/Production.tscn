@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cko71s4fvqk54"]
+
+[ext_resource type="Script" uid="uid://cqahwkvch1lup" path="res://scenes/load_and_save.gd" id="1_osh6i"]
+[ext_resource type="Resource" uid="uid://3xuhp0ma5tdk" path="res://data/productions/expand/1.tres" id="2_osh6i"]
+[ext_resource type="PackedScene" uid="uid://bmmxfojkuvs2j" path="res://scenes/tile_map_layer_sword.tscn" id="3_ga6xh"]
+
+[node name="Production_editor" type="Node2D" unique_id=1414331889]
+script = ExtResource("1_osh6i")
+production_resource = ExtResource("2_osh6i")
+
+[node name="LeftSide" parent="." unique_id=667064894 instance=ExtResource("3_ga6xh")]
+tile_map_data = PackedByteArray(0, 0, 4, 0, 3, 0, 0, 0, 0, 0, 5, 0, 0, 0, 4, 0, 2, 0, 0, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="RightSide" parent="." unique_id=2114302589 instance=ExtResource("3_ga6xh")]
+tile_map_data = PackedByteArray(0, 0, 4, 0, 3, 0, 0, 0, 1, 0, 5, 0, 0, 0, 4, 0, 2, 0, 0, 0, 0, 0, 2, 0, 0, 0, 5, 0, 2, 0, 0, 0, 0, 0, 5, 0, 0, 80, 3, 0, 2, 0, 0, 0, 0, 0, 5, 0, 0, 80)
+
+[node name="Border" parent="." unique_id=82690430 instance=ExtResource("3_ga6xh")]
+visible = false

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dnv4eqy36ni5d"]
+
+[ext_resource type="PackedScene" uid="uid://vpcdrm4pc315" path="res://scenes/crafting.tscn" id="1_uwrxv"]
+
+[node name="Game" type="Node2D" unique_id=1372379940]
+
+[node name="Crafting" parent="." unique_id=1772664073 instance=ExtResource("1_uwrxv")]
