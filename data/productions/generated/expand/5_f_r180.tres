@@ -1,0 +1,33 @@
+[gd_resource type="Resource" script_class="ProductionResource" format=3 uid="uid://v0saw8bkbt5d"]
+
+[ext_resource type="Script" uid="uid://cwrx7opuxuv8x" path="res://data/resources/ProductionResource.gd" id="1_7wvw0"]
+
+[resource]
+script = ExtResource("1_7wvw0")
+left_tiles = [{
+"alt": 20480,
+"atlas": Vector2i(0, 5),
+"pos": Vector2i(3, -5),
+"source": 0
+}, {
+"alt": 8192,
+"atlas": Vector2i(0, 4),
+"pos": Vector2i(3, -4),
+"source": 0
+}]
+right_tiles = [{
+"alt": 8192,
+"atlas": Vector2i(1, 5),
+"pos": Vector2i(3, -5),
+"source": 0
+}, {
+"alt": 4096,
+"atlas": Vector2i(1, 2),
+"pos": Vector2i(3, -4),
+"source": 0
+}, {
+"alt": 0,
+"atlas": Vector2i(0, 5),
+"pos": Vector2i(4, -4),
+"source": 0
+}]

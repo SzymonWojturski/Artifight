@@ -1,48 +1,44 @@
 extends TileMapLayer
 
-@onready var logic = $"../swordLogic"
-
+@onready var logic: TileMapLayer = $"../swordLogic"
 var dirty := true
 
-func _ready():
+func _ready() -> void:
 	rebuild()
 
-func mark_dirty():
+func mark_dirty() -> void:
 	dirty = true
 
-func _process(_delta):
+func _process(_delta: float) -> void:
 	if dirty:
 		rebuild()
 		dirty = false
 
-func rebuild():
+func rebuild() -> void:
 	clear()
 
-	var new_y = 0
+	if logic == null:
+		return
 
-	var rows := {}
+	var rect: Rect2i = logic.get_used_rect()
+	var start := rect.position
+	var end := rect.position + rect.size
 
-	for pos in logic.get_used_cells():
-		if (pos.y+1) % 2 == 0 and (pos.x+1) % 2 == 0:
-			if not rows.has(pos.y):
-				rows[pos.y] = []
-			rows[pos.y].append(pos)
+	for y in range(start.y, end.y):
+		for x in range(start.x, end.x):
+			# tylko co drugi kafel
+			if (x+1) % 2 != 0 or (y+1) % 2 != 0:
+				continue
 
-	var sorted_rows = rows.keys()
-	sorted_rows.sort()
+			var src := Vector2i(x, y)
+			var dst := Vector2i((x - start.x+1) / 2, (y - start.y+1) / 2)
 
-	for y in sorted_rows:
-		var row = rows[y]
-		row.sort_custom(func(a, b): return a.x < b.x)
+			var source_id := logic.get_cell_source_id(src)
+			if source_id == -1:
+				# puste zostaje puste
+				continue
 
-		var new_x = 0
+			var atlas := logic.get_cell_atlas_coords(src)
+			var alt := logic.get_cell_alternative_tile(src)
 
-		for pos in row:
-			var source_id = logic.get_cell_source_id(pos)
-			var atlas = logic.get_cell_atlas_coords(pos)
-
-			set_cell(Vector2i(new_x, new_y), source_id, atlas)
-
-			new_x += 1
-
-		new_y += 1
+			set_cell(dst, source_id, atlas, alt)

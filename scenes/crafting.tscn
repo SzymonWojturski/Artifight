@@ -29,13 +29,12 @@ offset_right = 1112.0
 offset_bottom = 560.0
 text = "reset"
 
-[node name="swordLogic" parent="." unique_id=667064894 instance=ExtResource("1_p2eb4")]
-tile_map_data = PackedByteArray(0, 0, 7, 0, 6, 0, 0, 0, 0, 0, 5, 0, 0, 96, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-
 [node name="swordRender" parent="." unique_id=724551256 instance=ExtResource("1_p2eb4")]
-visible = false
-tile_map_data = PackedByteArray(0, 0, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 6, 0, 0, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("3_jo1yo")
+
+[node name="swordLogic" parent="." unique_id=667064894 instance=ExtResource("1_p2eb4")]
+visible = false
+tile_map_data = PackedByteArray(0, 0, 7, 0, 6, 0, 0, 0, 0, 0, 5, 0, 0, 96, 7, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 
 [connection signal="pressed" from="Button" to="." method="_on_production_expand_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_production_shrink_pressed"]

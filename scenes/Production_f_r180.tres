@@ -1,0 +1,73 @@
+[gd_resource type="Resource" script_class="ProductionResource" format=3 uid="uid://dposgc2pr4i6o"]
+
+[ext_resource type="Script" uid="uid://cwrx7opuxuv8x" path="res://data/resources/ProductionResource.gd" id="1_khek0"]
+
+[resource]
+script = ExtResource("1_khek0")
+left_tiles = [{
+"alt": 16384,
+"atlas": Vector2i(0, 5),
+"pos": Vector2i(3, -3),
+"source": 0
+}, {
+"alt": 8192,
+"atlas": Vector2i(0, 4),
+"pos": Vector2i(0, -60),
+"source": 0
+}, {
+"alt": 8192,
+"atlas": Vector2i(0, 5),
+"pos": Vector2i(3480, -3600),
+"source": 0
+}, {
+"alt": 8192,
+"atlas": Vector2i(0, 4),
+"pos": Vector2i(3480, 0),
+"source": 0
+}, {
+"alt": 8192,
+"atlas": Vector2i(0, 5),
+"pos": Vector2i(0, -120),
+"source": 0
+}, {
+"alt": 8192,
+"atlas": Vector2i(0, 4),
+"pos": Vector2i(3, -2),
+"source": 0
+}]
+right_tiles = [{
+"alt": 8192,
+"atlas": Vector2i(0, 5),
+"pos": Vector2i(4, -2),
+"source": 0
+}, {
+"alt": 4096,
+"atlas": Vector2i(1, 2),
+"pos": Vector2i(3, -2),
+"source": 0
+}, {
+"alt": 8192,
+"atlas": Vector2i(1, 5),
+"pos": Vector2i(3, -3),
+"source": 0
+}, {
+"alt": 4096,
+"atlas": Vector2i(1, 2),
+"pos": Vector2i(0, -60),
+"source": 0
+}, {
+"alt": 8192,
+"atlas": Vector2i(1, 5),
+"pos": Vector2i(3480, -3600),
+"source": 0
+}, {
+"alt": 16384,
+"atlas": Vector2i(1, 2),
+"pos": Vector2i(3480, 0),
+"source": 0
+}, {
+"alt": 8192,
+"atlas": Vector2i(1, 5),
+"pos": Vector2i(0, -120),
+"source": 0
+}]

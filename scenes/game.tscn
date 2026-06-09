@@ -1,7 +1,51 @@
 [gd_scene format=3 uid="uid://dnv4eqy36ni5d"]
 
-[ext_resource type="PackedScene" uid="uid://vpcdrm4pc315" path="res://scenes/crafting.tscn" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://c143gmig02636" path="res://scenes/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://c5wqhfetjdbos" path="res://scenes/shooter/character.tscn" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://b5eqxk0l52wak" path="res://scenes/enemies/enemy.tscn" id="2_lnu2h"]
 
-[node name="Game" type="Node2D" unique_id=1372379940]
+[node name="game" type="Node2D" unique_id=1372379940]
+script = ExtResource("1_lnu2h")
 
-[node name="Crafting" parent="." unique_id=1772664073 instance=ExtResource("1_uwrxv")]
+[node name="character" parent="." unique_id=622224112 instance=ExtResource("1_yqjtg")]
+position = Vector2(473, 230)
+
+[node name="Enemy" parent="." unique_id=678734274 instance=ExtResource("2_lnu2h")]
+position = Vector2(23, 616)
+
+[node name="Enemy2" parent="." unique_id=149826949 instance=ExtResource("2_lnu2h")]
+position = Vector2(100, 629)
+
+[node name="Enemy3" parent="." unique_id=1438424680 instance=ExtResource("2_lnu2h")]
+position = Vector2(166, 628)
+
+[node name="Enemy4" parent="." unique_id=1097483258 instance=ExtResource("2_lnu2h")]
+position = Vector2(-481, 648)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1843653162]
+
+[node name="XPBar" type="ProgressBar" parent="HUD" unique_id=22919992]
+offset_right = 1920.0
+offset_bottom = 27.0
+
+[node name="LevelUpMenu" type="CanvasLayer" parent="HUD" unique_id=12515799]
+process_mode = 2
+visible = false
+
+[node name="ContinueButton" type="Button" parent="HUD/LevelUpMenu" unique_id=1893144477]
+offset_left = 1437.0
+offset_top = 478.0
+offset_right = 1785.0
+offset_bottom = 618.0
+text = "Kontynuuj"
+
+[node name="Label" type="Label" parent="HUD/LevelUpMenu" unique_id=1998726519]
+offset_left = 809.0
+offset_top = 77.0
+offset_right = 1398.0
+offset_bottom = 182.0
+text = "AWANS! Wybierz ulepszenie (Wkrótce)"
+
+[node name="EnemySpawner" type="Timer" parent="." unique_id=1857108006]
+wait_time = 2.0
+autostart = true

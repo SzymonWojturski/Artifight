@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://1bjphf0ib2c0"]
+
+[ext_resource type="Script" uid="uid://c2ij3xd1amk60" path="res://scenes/shooter/projectile.gd" id="1_ngxvv"]
+[ext_resource type="Texture2D" uid="uid://b853ravbqr5cc" path="res://sprites/bullet.png" id="2_ecqim"]
+
+[node name="HurtBox" type="Area2D" unique_id=700166910]
+scale = Vector2(5, 5)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_ngxvv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1681408840]
+texture = ExtResource("2_ecqim")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1329157986]
+polygon = PackedVector2Array(-5, 3, -7, 3, -8, 2, -8, -5, -7, -7, -6, -8, 6, -8, 7, -7, 8, -5, 8, 2, 7, 3, 5, 3, 2, -3, -2, -3)

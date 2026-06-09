@@ -1,0 +1,40 @@
+[gd_scene format=4 uid="uid://c5wqhfetjdbos"]
+
+[ext_resource type="Script" uid="uid://dbl7rarjw2w03" path="res://scenes/shooter/character_body_2d.gd" id="1_1p6uh"]
+[ext_resource type="Texture2D" uid="uid://i1no07ihoqtj" path="res://sprites/90.png" id="1_w23xm"]
+[ext_resource type="PackedScene" uid="uid://bmmxfojkuvs2j" path="res://scenes/tile_map_layer_sword.tscn" id="3_rljcl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rljcl"]
+radius = 21.095022
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=622224112]
+script = ExtResource("1_1p6uh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=710407802]
+shape = SubResource("CircleShape2D_rljcl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1036878054]
+position = Vector2(-1, -2)
+texture = ExtResource("1_w23xm")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=635574989]
+
+[node name="TileMapLayerSword" parent="." unique_id=667064894 instance=ExtResource("3_rljcl")]
+position = Vector2(55, 36)
+rotation = 1.5707964
+scale = Vector2(1, 1)
+tile_map_data = PackedByteArray("AAD+/wEAAAAAAAAAAAD9/wEAAAABAAMAAAD//wEAAAABAAMAABD+/wAAAAACAAIAAAD+////AAACAAEAAAD+/wIAAAAAAAMAAAA=")
+
+[node name="projectile_init_point" type="Node2D" parent="TileMapLayerSword" unique_id=361775019]
+position = Vector2(-27, -13.999999)
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1183790784]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=227573120]
+shape = SubResource("CircleShape2D_rljcl")
+
+[node name="HPBar" type="ProgressBar" parent="." unique_id=1704353719]
+offset_left = -49.0
+offset_top = -60.0
+offset_right = 56.0
+offset_bottom = -31.0

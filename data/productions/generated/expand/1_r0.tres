@@ -1,9 +1,9 @@
-[gd_resource type="Resource" script_class="ProductionResource" format=3 uid="uid://dpsqfycmm1o5a"]
+[gd_resource type="Resource" script_class="ProductionResource" format=3 uid="uid://burlropn8cuvr"]
 
-[ext_resource type="Script" uid="uid://cwrx7opuxuv8x" path="res://data/resources/ProductionResource.gd" id="1_w8yqp"]
+[ext_resource type="Script" uid="uid://cwrx7opuxuv8x" path="res://data/resources/ProductionResource.gd" id="1_woyte"]
 
 [resource]
-script = ExtResource("1_w8yqp")
+script = ExtResource("1_woyte")
 left_tiles = [{
 "alt": 0,
 "atlas": Vector2i(0, 4),

@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b5eqxk0l52wak"]
+
+[ext_resource type="Texture2D" uid="uid://dabss8bpf615m" path="res://sprites/80.png" id="1_6xk8f"]
+[ext_resource type="Script" uid="uid://2q2fr4i5v5tk" path="res://scenes/enemies/enemy.gd" id="1_8e3ao"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8e3ao"]
+radius = 23.194826
+
+[node name="Enemy" type="CharacterBody2D" unique_id=678734274]
+collision_layer = 2
+script = ExtResource("1_8e3ao")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=940688707]
+shape = SubResource("CircleShape2D_8e3ao")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=340983880]
+position = Vector2(-2, -8)
+texture = ExtResource("1_6xk8f")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=555312221]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=990445663]
+shape = SubResource("CircleShape2D_8e3ao")
+
+[node name="HPBar" type="ProgressBar" parent="." unique_id=492150901]
+offset_left = -53.0
+offset_top = -83.0
+offset_right = 52.0
+offset_bottom = -54.0
