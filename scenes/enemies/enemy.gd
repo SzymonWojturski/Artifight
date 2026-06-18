@@ -9,20 +9,31 @@ const MIN_DISTANCE = 80.0
 const SEPARATION_RADIUS = 150.0
 const SEPARATION_FORCE = 60000.0
 const MAX_SPEED = 1500.0
-const MAX_HP = 3
+const MAX_HP = 8
 const DAMAGE = 1
 const XP_VALUE = 25
 
 var hp = MAX_HP
+# mnożniki trudności ustawiane przez spawner PRZED dodaniem do sceny
+var hp_mult: float = 1.0
+var speed_mult: float = 1.0
+var max_speed: float = MAX_SPEED
 
 func _ready() -> void:
 	add_to_group("enemies")
 	collision_layer = 2
 	collision_mask = 1
 	hurtbox.area_entered.connect(_on_hurtbox_entered)
-	
+	# żeby hurtbox gracza (maska 1) wykrył wroga i gracz dostał obrażenia
+	hurtbox.add_to_group("enemy_body")
+	hurtbox.collision_layer = hurtbox.collision_layer | 1
+
+	var max_hp := int(round(MAX_HP * hp_mult))
+	hp = max_hp
+	max_speed = MAX_SPEED * speed_mult
+
 	if hp_bar:
-		hp_bar.max_value = MAX_HP
+		hp_bar.max_value = max_hp
 		hp_bar.value = hp
 
 	var to_player = player.global_position - global_position
@@ -36,6 +47,8 @@ func _ready() -> void:
 func _on_hurtbox_entered(area: Area2D) -> void:
 	if area.is_in_group("projectile"):
 		take_damage(area.damage)
+		if area.has_method("on_hit"):
+			area.on_hit()
 
 func take_damage(amount: int) -> void:
 	hp -= amount
@@ -55,7 +68,7 @@ func _physics_process(delta: float) -> void:
 	var distance = max(to_player.length(), MIN_DISTANCE)
 	var direction = to_player.normalized()
 
-	velocity += direction * GRAVITY_STRENGTH * delta
+	velocity += direction * GRAVITY_STRENGTH * speed_mult * delta
 
 	for body in get_tree().get_nodes_in_group("enemies"):
 		if body == self:
@@ -65,7 +78,7 @@ func _physics_process(delta: float) -> void:
 		if dist < SEPARATION_RADIUS and dist > 0.0:
 			velocity += to_other.normalized() * (SEPARATION_FORCE / max(dist * dist, 1.0)) * delta
 
-	if velocity.length() > MAX_SPEED:
-		velocity = velocity.normalized() * MAX_SPEED
+	if velocity.length() > max_speed:
+		velocity = velocity.normalized() * max_speed
 
 	move_and_slide()

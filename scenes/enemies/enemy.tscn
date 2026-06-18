@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b5eqxk0l52wak"]
 
-[ext_resource type="Texture2D" uid="uid://dabss8bpf615m" path="res://sprites/80.png" id="1_6xk8f"]
 [ext_resource type="Script" uid="uid://2q2fr4i5v5tk" path="res://scenes/enemies/enemy.gd" id="1_8e3ao"]
+[ext_resource type="Texture2D" uid="uid://bpslw5x4uvvi6" path="res://sprites/enemy.png" id="2_8e3ao"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8e3ao"]
 radius = 23.194826
@@ -14,8 +14,9 @@ script = ExtResource("1_8e3ao")
 shape = SubResource("CircleShape2D_8e3ao")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=340983880]
-position = Vector2(-2, -8)
-texture = ExtResource("1_6xk8f")
+position = Vector2(-19.999996, 4.7683716e-07)
+scale = Vector2(0.0707194, 0.0707194)
+texture = ExtResource("2_8e3ao")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=555312221]
 collision_layer = 0

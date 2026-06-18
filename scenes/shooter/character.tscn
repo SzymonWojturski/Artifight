@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://c5wqhfetjdbos"]
 
 [ext_resource type="Script" uid="uid://dbl7rarjw2w03" path="res://scenes/shooter/character_body_2d.gd" id="1_1p6uh"]
-[ext_resource type="Texture2D" uid="uid://i1no07ihoqtj" path="res://sprites/90.png" id="1_w23xm"]
+[ext_resource type="Texture2D" uid="uid://bv6rbm7qxgtx2" path="res://sprites/hero.png" id="2_rljcl"]
 [ext_resource type="PackedScene" uid="uid://bmmxfojkuvs2j" path="res://scenes/tile_map_layer_sword.tscn" id="3_rljcl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rljcl"]
@@ -14,8 +14,9 @@ script = ExtResource("1_1p6uh")
 shape = SubResource("CircleShape2D_rljcl")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1036878054]
-position = Vector2(-1, -2)
-texture = ExtResource("1_w23xm")
+position = Vector2(-4.000004, 8.999999)
+scale = Vector2(0.12011717, 0.12011719)
+texture = ExtResource("2_rljcl")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=635574989]
 

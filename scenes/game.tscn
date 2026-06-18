@@ -3,9 +3,124 @@
 [ext_resource type="Script" uid="uid://c143gmig02636" path="res://scenes/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://c5wqhfetjdbos" path="res://scenes/shooter/character.tscn" id="1_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://b5eqxk0l52wak" path="res://scenes/enemies/enemy.tscn" id="2_lnu2h"]
+[ext_resource type="Script" uid="uid://0rwmwtghrpws" path="res://scenes/pause_menu.gd" id="3_pause"]
+[ext_resource type="Shader" uid="uid://c5kv4gy5g070h" path="res://scenes/background.gdshader" id="5_bg_shader"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bg"]
+shader = ExtResource("5_bg_shader")
+shader_parameter/cam_offset = Vector2(0, 0)
+shader_parameter/world_scale = 1.0
+shader_parameter/tile_scale = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_perk"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.1, 0.09, 0.28, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.32, 0.85, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_perk_hover"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.2, 0.17, 0.5, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.5, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pause_btn"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.1, 0.3, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.4, 0.32, 0.85, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pause_btn_hover"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.22, 0.18, 0.55, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.6, 0.5, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exit_btn"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.28, 0.08, 0.08, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.85, 0.3, 0.3, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_exit_btn_hover"]
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+bg_color = Color(0.45, 0.12, 0.12, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.45, 0.45, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="game" type="Node2D" unique_id=1372379940]
 script = ExtResource("1_lnu2h")
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=425043396]
+layer = -100
+
+[node name="BGRect" type="ColorRect" parent="Background" unique_id=962747787]
+material = SubResource("ShaderMaterial_bg")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="character" parent="." unique_id=622224112 instance=ExtResource("1_yqjtg")]
 position = Vector2(473, 230)
@@ -26,26 +141,134 @@ position = Vector2(-481, 648)
 
 [node name="XPBar" type="ProgressBar" parent="HUD" unique_id=22919992]
 offset_right = 1920.0
-offset_bottom = 27.0
+offset_bottom = 40.0
 
 [node name="LevelUpMenu" type="CanvasLayer" parent="HUD" unique_id=12515799]
 process_mode = 2
 visible = false
 
-[node name="ContinueButton" type="Button" parent="HUD/LevelUpMenu" unique_id=1893144477]
-offset_left = 1437.0
-offset_top = 478.0
-offset_right = 1785.0
-offset_bottom = 618.0
-text = "Kontynuuj"
+[node name="BG" type="ColorRect" parent="HUD/LevelUpMenu" unique_id=100000001]
+offset_left = 480.0
+offset_top = 140.0
+offset_right = 1440.0
+offset_bottom = 820.0
+color = Color(0.05, 0.04, 0.14, 0.97)
 
 [node name="Label" type="Label" parent="HUD/LevelUpMenu" unique_id=1998726519]
-offset_left = 809.0
-offset_top = 77.0
-offset_right = 1398.0
-offset_bottom = 182.0
-text = "AWANS! Wybierz ulepszenie (Wkrótce)"
+modulate = Color(0.88, 0.8, 1, 1)
+offset_left = 540.0
+offset_top = 185.0
+offset_right = 1380.0
+offset_bottom = 285.0
+theme_override_font_sizes/font_size = 48
+text = "AWANS! Wybierz ulepszenie:"
+horizontal_alignment = 1
+
+[node name="Sep" type="ColorRect" parent="HUD/LevelUpMenu" unique_id=1034520386]
+offset_left = 540.0
+offset_top = 298.0
+offset_right = 1380.0
+offset_bottom = 302.0
+color = Color(0.4, 0.32, 0.85, 1)
+
+[node name="PerkRebuild" type="Button" parent="HUD/LevelUpMenu" unique_id=100000003]
+offset_left = 560.0
+offset_top = 330.0
+offset_right = 1360.0
+offset_bottom = 480.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_perk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_perk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_perk_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_perk")
+text = "Zbuduj miecz od nowa"
+
+[node name="PerkPlus" type="Button" parent="HUD/LevelUpMenu" unique_id=100000004]
+offset_left = 560.0
+offset_top = 510.0
+offset_right = 1360.0
+offset_bottom = 660.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_perk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_perk")
+theme_override_styles/hover = SubResource("StyleBoxFlat_perk_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_perk")
+text = "+1 do liczby produkcji przy budowie"
+
+[node name="PauseMenu" type="CanvasLayer" parent="HUD" unique_id=1771330755]
+process_mode = 3
+layer = 10
+visible = false
+script = ExtResource("3_pause")
+
+[node name="Overlay" type="ColorRect" parent="HUD/PauseMenu" unique_id=1601240592]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0.62)
+
+[node name="PanelBG" type="ColorRect" parent="HUD/PauseMenu" unique_id=274463378]
+offset_left = 660.0
+offset_top = 300.0
+offset_right = 1260.0
+offset_bottom = 780.0
+color = Color(0.06, 0.05, 0.16, 0.98)
+
+[node name="PanelBorder" type="ColorRect" parent="HUD/PauseMenu" unique_id=915389471]
+z_index = -1
+offset_left = 658.0
+offset_top = 298.0
+offset_right = 1262.0
+offset_bottom = 782.0
+color = Color(0.4, 0.32, 0.85, 1)
+
+[node name="Title" type="Label" parent="HUD/PauseMenu" unique_id=928156737]
+modulate = Color(0.88, 0.8, 1, 1)
+offset_left = 660.0
+offset_top = 330.0
+offset_right = 1260.0
+offset_bottom = 430.0
+theme_override_font_sizes/font_size = 72
+text = "PAUZA"
+horizontal_alignment = 1
+
+[node name="Sep" type="ColorRect" parent="HUD/PauseMenu" unique_id=2079955227]
+offset_left = 720.0
+offset_top = 440.0
+offset_right = 1200.0
+offset_bottom = 443.0
+color = Color(0.4, 0.32, 0.85, 1)
+
+[node name="ResumeButton" type="Button" parent="HUD/PauseMenu" unique_id=1454874724]
+offset_left = 720.0
+offset_top = 468.0
+offset_right = 1200.0
+offset_bottom = 568.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_pause_btn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pause_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pause_btn_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pause_btn")
+text = "Wróć do gry"
+
+[node name="ExitButton" type="Button" parent="HUD/PauseMenu" unique_id=1984462847]
+offset_left = 720.0
+offset_top = 600.0
+offset_right = 1200.0
+offset_bottom = 700.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_exit_btn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_exit_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_exit_btn_hover")
+theme_override_styles/focus = SubResource("StyleBoxFlat_exit_btn")
+text = "Wyjdź do menu"
 
 [node name="EnemySpawner" type="Timer" parent="." unique_id=1857108006]
 wait_time = 2.0
 autostart = true
+
+[connection signal="pressed" from="HUD/PauseMenu/ResumeButton" to="HUD/PauseMenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="HUD/PauseMenu/ExitButton" to="HUD/PauseMenu" method="_on_exit_pressed"]
